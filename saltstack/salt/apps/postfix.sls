@@ -1,26 +1,25 @@
-{% set runas_user = salt.pillar.get('runas_user') %}
+# Install Postfix for emails
 
 postfix:
   pkg.installed:
     - name: postfix
-    - runas: {{ runas_user }}
+
   service.running:
-    - runas: {{ runas_user }}
     - enable: True
     - require:
       - pkg: postfix
 
-/etc/postfix:
+create_postfix_directory:
   file.directory:
-    - runas: {{ runas_user }}
+    - name: /etc/postfix
     - dir_mode: 755
     - file_mode: 644
     - makedirs: True
 
-/etc/postfix/main.cf:
+create_postfix_config:
   file.managed:
-    - source: salt://files/postfix.cf
-    - runas: {{ runas_user }}
+    - name: /etc/postfix/main.cf
+    - source: salt://apps/files/postfix.cf
     - template: jinja
     - mode: 644
     - require:

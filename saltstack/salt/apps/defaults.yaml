@@ -1,0 +1,6 @@
+install_apps: []
+configure_apps:
+  install_pips: []
+  install_node_modules: []
+  git: {}
+  ruby: {}

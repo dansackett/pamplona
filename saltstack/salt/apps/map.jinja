@@ -1,0 +1,2 @@
+{% import_yaml "apps/defaults.yaml" as default_settings %}
+{% set apps_settings = salt.pillar.get('apps', default=default_settings, merge=true) %}

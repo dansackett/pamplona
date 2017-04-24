@@ -1,0 +1,2 @@
+{% import_yaml "core/defaults.yaml" as default_settings %}
+{% set core_settings = salt.pillar.get('core', default=default_settings, merge=true) %}

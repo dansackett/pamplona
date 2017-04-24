@@ -1,6 +1,7 @@
 # Pamplona
 
-> You can't get away from yourself by moving from one place to another.
+> In bull-fighting they speak of the terrain of the bull and the terrain of the bull-fighter. As long as a bull-fighter stays in his own terrain he is comparatively safe. Each time he enters into the terrain of the bull he is in great danger. Belmonte, in his best days, worked always in the terrain of the bull. This way he gave the sensation of coming tragedy.
+>
 > ― Ernest Hemingway, The Sun Also Rises
 
 **NOTE:** This is still in active development.
@@ -38,6 +39,6 @@ highstate and update the states on the system.
 
 ## Todo
 
-- [ ] Clean up naming of states
 - [ ] Find out if salt-call can show progress on a masterless minion
 - [ ] Add environments to top files and server dependencies so I can make pamplona desktops and servers
+- [ ] More comprehensive README

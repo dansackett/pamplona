@@ -1,0 +1,4 @@
+locale: en_US
+timezone: 'America/New_York'
+users: {}
+install_apt_packages: []

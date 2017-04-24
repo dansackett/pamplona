@@ -1,4 +1,4 @@
-{% set runas_user = salt.pillar.get('runas_user') %}
+# Install Numix Icon Set
 
 install_numix:
   pkgrepo.managed:
@@ -6,13 +6,14 @@ install_numix:
     - file: /etc/apt/sources.list.d/numix.list
     - keyid: 43E076121739DEE5FB96BBED52B709720F164EEB
     - keyserver: keyserver.ubuntu.com
-    - runas: {{ runas_user }}
     - require_in:
-      - pkg: numix-gtk-theme
-      - pkg: numix-icon-theme-circle
+      - pkg: install_numix_gtk_theme
+      - pkg: install_numix_icon_theme_circle
 
-numix-gtk-theme:
-  pkg.installed
+install_numix_gtk_theme:
+  pkg.installed:
+    - name: numix-gtk-theme
 
-numix-icon-theme-circle:
-  pkg.installed
+install_numix_icon_theme_circle:
+  pkg.installed:
+    - name: numix-icon-theme-circle
