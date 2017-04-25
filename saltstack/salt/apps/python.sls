@@ -1,7 +1,7 @@
 # Install Python and pip requirements
 
 {% from "apps/map.jinja" import apps_settings with context %}
-{% set apps_config = apps_settings.get('configure_apps') %}
+{% set install_pips = apps_settings.get('install_pips') %}
 
 install_python:
   pkg.installed:
@@ -27,8 +27,8 @@ install_python3_pip:
   pkg.installed:
     - name: python3-pip
 
-{% if apps_config.get('install_pips') %}
-{% for pip in apps_config.get('install_pips') %}
+{% if install_pips %}
+{% for pip in install_pips %}
 install_{{ pip }}:
   pip.installed:
     - name: {{ pip }}

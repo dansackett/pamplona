@@ -4,7 +4,7 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-bin/bootstrap
+bin/bootstrap_desktop
 
 echo "==> Removing current saltstack"
 sudo rm -Rf /srv/salt
@@ -14,9 +14,9 @@ echo "==> Copying saltstack"
 sudo cp -Rf saltstack/salt /srv/salt
 sudo cp -Rf saltstack/pillar /srv/pillar
 
-echo "==> Setting access permissions to saltstack"
+echo "==> Setting access permissions to salt roots"
 sudo chmod -R 0644 /srv/salt
 sudo chmod -R 0644 /srv/pillar
 
-echo "==> Running salt-call..."
-sudo salt-call -l debug state.highstate
+echo "==> Running highstate on desktop minion..."
+sudo salt-call state.highstate -l debug

@@ -1,12 +1,12 @@
 hostname: pamplona
 runas_user:
-  username: dan
+  username: ubuntu
   full_name: Dan Sackett
 core:
   locale: en_US
   timezone: 'America/New_York'
   users:
-    ubuntu:
+    ubuntu2:
       full_name: Ubuntu
   install_apt_packages:
     - build-essential
@@ -26,6 +26,7 @@ core:
     - redshift
     - redshift-gtk
     - unity-tweak-tool
+    - direnv
 apps:
   install_apps:
     - docker
@@ -44,13 +45,14 @@ apps:
     - vagrant
     - virtualbox
     - virtualenv
+    - vundle
     - yarn
+  install_pips:
+    - todooo-cli
+    - bpython
+  install_node_modules:
+    - create-react-app
   configure_apps:
-    install_pips:
-      - todooo-cli
-      - bpython
-    install_node_modules:
-      - create-react-app
     git:
       user:
         name: Dan Sackett
@@ -60,4 +62,4 @@ apps:
     ruby:
       default: 2.3.0
       install_versions:
-        - 2.3.0
+        - 2.2.0

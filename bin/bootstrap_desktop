@@ -1,0 +1,66 @@
+#!/bin/sh
+#
+# Bootstrap the nucleus of the Pamplona project for a local desktop master.
+#
+# Our desktop will have both a master and a minion running allowing us to apply
+# states locally to the desktop and also giving us access to any remote servers
+# we specify in our topfile.
+#
+# This process is automated in order to setup the foundation of the Pamplona
+# infrastructure. In order to add new minions into the Pamplona network you
+# should examine keys acceptance in finer details ensuring that you are
+# correctly linking the nodes in a secure way.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ "$(which add-apt-repository)" ]; then
+    echo "==> Add-apt-repository command available"
+else
+    echo "==> Installing software-properties-common"
+    sudo apt-get -y software-properties-common
+fi
+
+if [ -f "/etc/apt/sources.list.d/saltstack.list" ]; then
+    echo "==> SaltStack repository available"
+else
+    echo "==> Adding the SaltStack repository"
+    wget -O - https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+    echo 'deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main' | sudo tee /etc/apt/sources.list.d/saltstack.list
+
+    echo "==> Updating repository"
+    sudo apt-get update
+
+    echo "==> Installing salt-master and salt-minion"
+    sudo apt-get install salt-master salt-minion -y
+
+    echo "==> Creating salt-master desktop config"
+    cat saltstack/desktop_master | sudo tee /etc/salt/master
+
+    echo "==> Creating salt-minion desktop config"
+    cat saltstack/desktop_minion | sudo tee /etc/salt/minion
+
+    echo "==> Setting access permissions to salt configs"
+    sudo chmod 0644 /etc/salt/master
+    sudo chmod 0644 /etc/salt/minion
+
+    echo "==> Restarting master and minion servivces"
+    sudo service salt-master restart
+    sudo service salt-minion restart
+
+    echo "==> Listing unaccepted keys"
+    sudo salt-key --list all
+
+    echo "==> Accepting minion key on salt-master"
+    sudo salt-key -a pamplona-desktop -y
+
+    echo "==> Listing accepted keys"
+    sudo salt-key --list all
+
+    echo "==> Testing can ping salt-minion"
+    sudo salt 'pamplona-desktop' test.ping
+
+    echo "==> Installing python-progressbar for better progress handling"
+    sudo apt-get install python-progressbar
+fi

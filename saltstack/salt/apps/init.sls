@@ -1,6 +1,9 @@
 {% from "apps/map.jinja" import apps_settings with context %}
 
 include:
+  {% if 'vundle' in apps_settings.get('install_apps') %}
+  - apps.vundle
+  {% endif %}
   {% if 'python' in apps_settings.get('install_apps') %}
   - apps.python
   {% endif %}

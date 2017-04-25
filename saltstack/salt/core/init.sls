@@ -13,4 +13,4 @@ include:
   {% if core_settings.get('install_apt_packages') %}
   - core.apt-packages
   {% endif %}
-  # - dotfiles
+  - core.dotfiles

@@ -4,4 +4,4 @@
 
 set_timezone:
   timezone.system:
-   - name: {{ core_settings.get('locale') }}
+   - name: {{ core_settings.get('timezone') }}

@@ -7,6 +7,8 @@
   user.present:
     - fullname: {{ runas_user.get('full_name') }}
     - shell: /bin/bash
+    - groups:
+      - sudo
     - home: /home/{{ runas_user.get('username') }}
 
 {% if core_settings.get('users') %}
