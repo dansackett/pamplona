@@ -1,4 +1,6 @@
 {% set hostname = salt.pillar.get('hostname') %}
+# WARNING!!   This file is managed by Salt
+# All edits will be lost on the next highstate
 
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 

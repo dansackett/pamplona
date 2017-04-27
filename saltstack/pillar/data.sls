@@ -31,6 +31,7 @@ apps:
   install_apps:
     - docker
     - git
+    - golang
     - google-chrome
     - mumble
     - node
@@ -63,3 +64,9 @@ apps:
       default: 2.3.0
       install_versions:
         - 2.2.0
+    golang:
+      prefix: /usr/local
+      go_root: /usr/local/go
+      go_path: /var/lib/golang
+      version: '1.8.1'
+      archive_hash: 'a579ab19d5237e263254f1eac5352efcf1d70b9dacadb6d6bb12b0911ede8994'

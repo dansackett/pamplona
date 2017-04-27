@@ -17,6 +17,6 @@ create_hosts_file:
 
 set_hostname:
   cmd.run:
-    - name: hostnamectl set-hostname {{ hostname }}
+    - name: sudo hostnamectl set-hostname {{ hostname }}
     - runas: {{ runas_username }}
     - unless: test "{{ hostname }}" = "$(hostname)"

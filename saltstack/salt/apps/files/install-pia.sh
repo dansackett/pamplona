@@ -1,5 +1,8 @@
 #! /bin/sh -
 #
+# WARNING!!   This file is managed by Salt
+# All edits will be lost on the next highstate
+#
 # Install OpenVPN connections for all available
 # regions to NetworkManager
 #
