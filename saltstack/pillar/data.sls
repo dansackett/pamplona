@@ -14,9 +14,6 @@ core:
     - libffi-dev
     - libxml2-dev
     - curl
-    - vim
-    - vim-gnome
-    - vim-common
     - htop
     - sqlite3
     - libsqlite3-dev
@@ -44,6 +41,7 @@ apps:
     - shutter
     - spotify
     - vagrant
+    - vim
     - virtualbox
     - virtualenv
     - vundle

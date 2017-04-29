@@ -6,12 +6,12 @@
 get_dotfiles_repository:
   git.latest:
     - name: https://github.com/dansackett/dotfiles.git
-    - target: /home/{{ runas_username }}/dotfiles
+    - target: /home/{{ runas_username }}/projects/dotfiles
     - user: {{ runas_username }}
 
 copy_dotfiles_to_home_directory:
   cmd.run:
-    - name: rsync -av --exclude='.git' /home/{{ runas_username }}/dotfiles/ /home/{{ runas_username }}/
+    - name: python /home/{{ runas_username }}/projects/dotfiles/build.py
     - runas: {{ runas_username }}
     - require:
       - get_dotfiles_repository

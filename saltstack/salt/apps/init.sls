@@ -1,6 +1,9 @@
 {% from "apps/map.jinja" import apps_settings with context %}
 
 include:
+  {% if 'vim' in apps_settings.get('install_apps') %}
+  - apps.vim
+  {% endif %}
   {% if 'golang' in apps_settings.get('install_apps') %}
   - apps.golang
   {% endif %}

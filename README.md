@@ -23,16 +23,9 @@ personal desktop to keep dependencies controlled and easy to reproduce.
 That's where Saltstack comes in.
 
 By defining all of my applications and packages in Salt config files I can add
-new packages and apply them to any server in my Salt network. Salt has its
+new packages and apply them to any minion in my Salt network. Salt has its
 rough edges but when it comes to installing dependencies on servers and
 communicating within a network of servers it really shines.
-
-From this setup you can add minion servers across the internet and run them
-directly from your desktop. Making package updates, managing databases, and
-ensuring processes are kept alive can all be done without SSHing into the
-machine.
-
-That is my hope at least.
 
 ## Getting Started
 
@@ -68,9 +61,6 @@ core:
     - libffi-dev
     - libxml2-dev
     - curl
-    - vim
-    - vim-gnome
-    - vim-common
     - htop
     - sqlite3
     - libsqlite3-dev
@@ -84,6 +74,7 @@ apps:
   install_apps:
     - docker
     - git
+    - golang
     - google-chrome
     - mumble
     - node
@@ -96,6 +87,7 @@ apps:
     - shutter
     - spotify
     - vagrant
+    - vim
     - virtualbox
     - virtualenv
     - yarn
@@ -216,11 +208,8 @@ highstate and update the states on the system.
 
 ## Requirements still to do
 
-- [ ] vundle
 - [ ] mysql
-- [ ] dotfiles
 
 ## Todo
 
-- [ ] Add environments to top files and server dependencies so I can make pamplona desktops and servers
 - [ ] Figure out the best way to show progress other than debug (reactor, returner, etc)

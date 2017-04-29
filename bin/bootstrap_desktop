@@ -49,6 +49,9 @@ else
     sudo service salt-master restart
     sudo service salt-minion restart
 
+    # Pause for 2 seconds to prepare for key acceptance
+    sleep 2
+
     echo "==> Listing unaccepted keys"
     sudo salt-key --list all
 
