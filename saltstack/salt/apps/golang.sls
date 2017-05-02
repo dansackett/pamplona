@@ -87,3 +87,15 @@ setup_bash_profile_for_go:
     - template: jinja
     - mode: 644
     - user: {{ runas_username }}
+
+{% if apps_settings.get('install_go_packages') %}
+{% for pkg in apps_settings.get('install_go_packages') %}
+install_{{ pkg }}:
+  cmd.run:
+    - name: source /etc/profile.d/golang.sh && go get {{ pkg }}
+    - require:
+      - file: setup_bash_profile_for_go
+      - cmd: copy_dotfiles_to_home_directory
+      - archive: extract_go_archive
+{% endfor %}
+{% endif %}

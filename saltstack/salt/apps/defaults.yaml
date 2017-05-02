@@ -1,5 +1,6 @@
 install_apps: []
 install_pips: []
+install_go_packages: []
 install_node_modules: []
 install_gems: []
 configure_apps:

@@ -49,6 +49,8 @@ apps:
   install_pips:
     - todooo-cli
     - bpython
+  install_go_packages:
+    - github.com/dansackett/gophersay
   install_node_modules:
     - create-react-app
   configure_apps:

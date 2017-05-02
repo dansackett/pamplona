@@ -23,7 +23,7 @@ user.name:
 {% if git_user and git_user.get('email') %}
 user.email:
   git.config_set:
-    - value: {{ git_user.get('name') }}
+    - value: {{ git_user.get('email') }}
     - global: true
     - require:
       - pkg: git
