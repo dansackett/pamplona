@@ -84,12 +84,14 @@ apps:
     - python
     - redis
     - rvm
+    - search
     - shutter
     - spotify
     - vagrant
     - vim
     - virtualbox
     - virtualenv
+    - vimplug
     - yarn
   install_pips:
     - todooo-cli

@@ -1,14 +1,17 @@
 {% from "apps/map.jinja" import apps_settings with context %}
 
 include:
+  {% if 'search' in apps_settings.get('install_apps') %}
+  - apps.search
+  {% endif %}
   {% if 'vim' in apps_settings.get('install_apps') %}
   - apps.vim
   {% endif %}
   {% if 'golang' in apps_settings.get('install_apps') %}
   - apps.golang
   {% endif %}
-  {% if 'vundle' in apps_settings.get('install_apps') %}
-  - apps.vundle
+  {% if 'vimplug' in apps_settings.get('install_apps') %}
+  - apps.vimplug
   {% endif %}
   {% if 'python' in apps_settings.get('install_apps') %}
   - apps.python

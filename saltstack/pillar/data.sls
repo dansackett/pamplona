@@ -38,13 +38,14 @@ apps:
     - python
     - redis
     - rvm
+    - search
     - shutter
     - spotify
     - vagrant
     - vim
     - virtualbox
     - virtualenv
-    - vundle
+    - vimplug
     - yarn
   install_pips:
     - todooo-cli
