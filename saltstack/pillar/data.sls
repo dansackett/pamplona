@@ -32,6 +32,7 @@ apps:
     - google-chrome
     - mumble
     - node
+    - notes
     - numix
     - postfix
     - postgres

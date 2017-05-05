@@ -64,3 +64,6 @@ include:
   {% if 'rvm' in apps_settings.get('install_apps') %}
   - apps.rvm
   {% endif %}
+  {% if 'notes' in apps_settings.get('install_apps') %}
+  - apps.notes
+  {% endif %}
